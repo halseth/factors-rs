@@ -1,6 +1,12 @@
 [package]
-name = "multiply-rs"
+name = "factors-rs"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+risc0-zkvm-platform = { git = "https://github.com/halseth/risc0.git", rev="c7c0598dd08e1a724effd30737487f7c90c6aba1", features = ["export-syscalls"] }
+bytemuck = { version = "1.13", features = ["extern_crate_alloc"] }
+serde = { version = "1.0", default-features = false, features = [
+    "alloc",
+    "derive",
+] }

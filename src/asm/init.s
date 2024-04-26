@@ -17,6 +17,7 @@ __start:
 	addi	s0,sp,32	# store old stack pointer into s0
 	call	runcontract	# call runcontract with x=a0
 	sw	a0,-24(s0)	# store a0=y (return value from runcontract) on the stack
+	add	a7,a0,zero // hack load return value into a7
 	lw	ra,28(sp)	# load original ra from stack
 	lw	s0,24(sp)	# load original s0 from stack
 	addi	sp,sp,32	# deallocate 32 bytes from stack
@@ -24,5 +25,6 @@ __start:
 
 _sys_halt:
 	add	a1,sp,24
+	addi	a0,zero,0
 	li      t0,0
 	ecall
