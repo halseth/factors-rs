@@ -18,21 +18,23 @@ compile_error!("This crate only runs on bare metal");
 
 #[no_mangle]
 pub extern "C" fn runcontract(_: u32) -> u32 {
+    // Read unsiged integer from stdin.
+    // Wrtie 1 to stdout if a non-trivial factor of 901,
+    // write 0 otherwise.
     const num: u32 = 901;
 
     let a: u32 = env::read();
 
-    let res = if a == num || a == 1 {
+    let b: u32 = if a==0 || a == 1 {
         0
+    } else if num%a ==0 {
+        1
     } else {
-        let rem = num % a;
-        match rem {
-            0 => 1,
-            _ => 0,
-        }
+        0
     };
 
-    env::write(&res);
+    env::write(&b);
+
     return 0;
 }
 
