@@ -25,9 +25,9 @@ pub extern "C" fn runcontract(_: u32) -> u32 {
 
     let a: u32 = env::read();
 
-    let b: u32 = if a==0 || a == 1 {
+    let b: u32 = if a == 0 || a == 1 {
         0
-    } else if num%a ==0 {
+    } else if num % a == 0 {
         1
     } else {
         0
